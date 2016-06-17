@@ -1,0 +1,75 @@
+<div class="words">
+	<div class="container">
+		<h1>Hot Words Search</h1>
+		<div class="row">
+			<div class="col-md-offset-2 col-md-10">
+				<form ng-submit="wordsBtn(wordsForm)" role="form">
+					<div class="row">
+						<div class="col-md-3">
+							Screen_names:
+						</div>
+						<div class="col-md-9">
+							<div class="input-group">
+								<div class="input-group-addon">
+									@
+								</div>
+								<input type="text" placeholder="HillaryClinton;Daniel" required style="border-bottom-right-radius:5px;border-top-right-radius:5px;width:60%;" ng-model="wordsForm.name">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-5 col-md-offset-1">
+							Keywords Number:
+							<input type="number" required style="border-radius:5px;width:25%;" max="5" min="1" placeholder="2" ng-model="wordsForm.num">
+						</div>
+						<div class="col-md-5">
+							Days Range:
+							<input type="number" required style="border-radius:5px;width:25%;" placeholder="3 days" max="7" min="1" ng-model="wordsForm.days">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-offset-7">
+							<button type="submit" class="btn btn-fill">Search</button>
+						</div>
+					</div>
+				</form>
+				<hr>
+				<ul ng-model="wordsForm.name" style="font-size:20px;">
+					Typing: {{wordsForm.name}}
+				</ul>
+				<br>
+			</div>			
+			<div class="row" ng-show="resultsshow>0">
+				<hr>
+				<div class="col-md-offset-1 col-md-10">
+					<div class="row">
+						<hr>
+						<br>
+						<ul style="font-size:30px;text-align:center;font-weight:bold;">Results:</ul>
+						<br>
+						<label>
+							Screen Name:
+						</label>
+						<label ng-model="wordsForm.name">
+							{{allnames}}
+						</label>
+						<br>
+						<label>
+							Same Words:
+						</label>
+						<label ng-repeat="i in allwords">
+							{{i}};
+						</label>
+						<br>
+						<label>
+							Words Count:
+						</label>
+						<label ng-repeat="a in allcounts">
+							{{a}};
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

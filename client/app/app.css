@@ -1,0 +1,56 @@
+/**
+ * Bootstrap Fonts
+ */
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.eot');
+  src: url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+  url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.woff') format('woff'),
+  url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.ttf') format('truetype'),
+  url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+/**
+ * App-wide Styles
+ */
+
+.browserupgrade {
+  margin: 0 0;
+  background: #ccc;
+  color: #000;
+  padding: 0 0;
+}
+
+@media only screen and (max-height: 800px) {
+  .mainbody {
+    height: 100%;
+  }
+}
+
+button:active,
+button:focus,
+button.active {
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+input:active,
+input:focus,
+input.active {
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+textarea:active,
+textarea:focus,
+textarea.active {
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}

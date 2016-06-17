@@ -1,0 +1,19 @@
+/**
+ * footer directive style
+ */
+
+.footer {
+	margin-top: 15%;
+	display: block;
+	background-color: #707070;
+}
+
+.footer i {
+	font-size: 40px;
+	margin-top: 20px;
+	margin-bottom: 35px;
+	margin-left: 35px;
+	background-color: transparent;
+	color: white;
+}
+

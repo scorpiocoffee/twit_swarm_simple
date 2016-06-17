@@ -1,0 +1,72 @@
+<div class="main">
+	<div class="container">
+		<h1>Welcome, This is a Twitter Search!</h1>
+		<div class="row">
+			<div class="col-md-offset-1 col-md-5">
+				<form ng-submit="searchClick(searchForm)" role="form">
+					<div class="row">
+						<div class="col-md-4">
+							Candidate:
+						</div>
+						<div class="col-md-8">
+							<div class="input-group">
+								<div class="input-group-addon">
+									@
+								</div>
+								<input type="text" placeholder="e.g. HillaryClinton" style="width:170px;border-bottom-right-radius:5px;border-top-right-radius:5px;" ng-model="searchForm.name">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							HashTags:
+						</div>
+						<div class="col-md-8">
+							<div class="input-group">
+								<div class="input-group-addon">
+									#
+								</div>
+								<input type="text" placeholder="e.g. PrimaryDay" style="width:170px;border-bottom-right-radius:5px;border-top-right-radius:5px;" ng-model="searchForm.tag">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							Query:
+						</div>
+						<div class="col-md-8">
+							<input type="text" placeholder="e.g. Clinton" style="width:210px;border-radius:5px;" ng-model="searchForm.query" id="qu">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							Type:
+						</div>
+						<div class="col-md-8" style="width:240px;">
+							<select ng-model="searchForm.type" class="form-control">
+								<option>AND</option>
+								<option>OR</option>
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-offset-7 col-md-4">
+							<button type="submit" class="btn btn-fill">Search</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="col-md-5">
+				<label>There are {{twits.length}} results.</label>
+				<div id="twitpart" ng-repeat="n in twits">
+					<a href="http://twitter.com/{{n[0]}}/status/{{n[4]}}"><div>
+						<img src="{{n[3]}}">
+						<a href="http://twitter.com/{{n[0]}}">{{n[0]}}</a><br>
+						<em>{{n[1]}}</em>
+						<label>{{n[2]}}</label></div>
+					</a>
+				</div>				
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,119 @@
+<post></post>
+<div class="profile">
+	<div class="row">
+		<div class="col-md-offset-1 col-md-10">
+			<form ng-submit="profileBtn(profileForm)" role="form">
+				<div class="row">
+					<div class="col-md-4">
+						Candidate:
+					</div>
+					<div class="col-md-8">
+						<div class="input-group">
+							<div class="input-group-addon">
+								@
+							</div>
+							<input type="text" placeholder="e.g. HillaryClinton" style="width:170px;border-bottom-right-radius:5px;border-top-right-radius:5px;" ng-model="profileForm.name">
+							<button type="submit" class="btn btn-fill">profile</button>
+						</div>						
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-md-offset-1 col-md-10">		
+			<div ng-show="profileshow>0">
+				<div>
+					<div class="row">
+						<h1>{{profileinfo[0]}} Profile</h1>
+					</div>
+					<div class="row">	
+						<div class="media">
+							<div class="col-md-offset-1 col-md-1">
+								<a href="#">
+									<img class="media-object" src="{{profileinfo[2]}}"> 
+								</a>
+							</div>
+							<div class="col-md-8 col-md-offset-2">
+								<div class="row">
+									<div class="col-md-4">
+										Screen_name:
+									</div>
+									<div class="col-md-8">
+										{{profileinfo[1]}}
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="col-md-4">
+										Location:
+									</div>
+									<div class="col-md-8">
+										{{profileinfo[3]}}
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="col-md-4">
+										Description:
+									</div>
+									<div class="col-md-8">
+										{{profileinfo[4]}}
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="col-md-offset-1 col-md-2">
+										Followers:
+									</div>
+									<div class="col-md-1">
+										{{profileinfo[5]}}
+									</div>
+									<div class="col-md-2">
+										Following:
+									</div>
+									<div class="col-md-1">
+										{{profileinfo[6]}}
+									</div>
+									<div class="col-md-2">
+										Links:
+									</div>
+									<div class="col-md-1">
+										{{profileinfo[7]}}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<hr>
+					<div class="row" style="font-size:18px;">
+						hot words: {{hotwords.length}}
+					</div>
+					<br>
+					<div class="row">
+						<label ng-repeat="w in hotwords" id="words">{{w[0]}}: {{w[1]}};&nbsp;</label>
+					</div>
+					<hr>
+					<div class="row" style="font-size:18px;">
+						twitters:
+					</div>
+					<div class="row">
+						<a ng-repeat="i in twinfo" href="http://twitter.com/{{profileinfo[1]}}/status/{{i[2]}}">
+							<div id="twitbar">
+								<img src="{{i[5]}}" style="height:50px;width:50px;padding:0;" />
+								<em>{{i[0]}}</em><br>
+								<label>{{i[1]}}</label><br><hr>
+								<img src="{{i[6]}}" ng-show="imgstatus" style="height:auto;width:auto;padding:0;"/><br><hr>
+								<label style="margin-left:30%;color:skyblue;">
+									<i class="fa fa-retweet" style="font-size: 20px;">&nbsp;&nbsp;{{i[3]}}&nbsp;&nbsp;&nbsp;</i>
+									<i class="fa fa-heart" style="font-size: 20px;">&nbsp;&nbsp;{{i[4]}}</i>
+								</label>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <base href="/">
+    <title>WebTechnology</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Injecting all styles of this project used. -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- The whole style of this project. -->
+    <link rel="stylesheet" href="app/app.css">
+    <!-- Injecting the styles of each interface. -->
+    <link rel="stylesheet" href="app/main/main.css">
+    <link rel="stylesheet" href="app/words/words.css">
+    <link rel="stylesheet" href="app/profile/profile.css">
+    <link rel="stylesheet" href="app/post/post.css">
+    <link rel="stylesheet" href="app/navbar/navbar.css">
+    <link rel="stylesheet" href="app/footer/footer.css">
+  </head>
+  <body ng-app="webApp">
+
+    <!-- The location of each interface. -->
+    <!-- The navbar and footer are the sections and static located in each interface's top and bottom. -->
+    <!-- The middle section is the place to let other interface to located. -->
+    <navbar></navbar>
+    <div ng-view="" class="mainbody"></div>
+    <footer></footer>
+
+    <!-- Injecting all libraries which used in this project. -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-socket-io/socket.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <!-- Injecting the routes of the front end and the factory services. -->
+    <script src="app/app.js"></script>
+    <!-- Injecting the controller of each interface. -->
+    <script src="app/main/main.controller.js"></script>
+    <script src="app/words/words.controller.js"></script>
+    <script src="app/profile/profile.controller.js"></script>
+    <script src="app/post/post.directive.js"></script>
+    <script src="app/navbar/navbar.directive.js"></script>
+    <script src="app/footer/footer.directive.js"></script>
+    
+  </body>
+</html>

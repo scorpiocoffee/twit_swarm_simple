@@ -1,0 +1,39 @@
+/**
+ * navbar directive style
+ */
+
+.navbar {
+	display: block;
+	background-color: #707070;
+}
+
+.navbar-brand {
+	font-family: Comic Sans MS;
+	color: white;
+}
+
+.navbar a:hover {
+	text-decoration: none;
+	color: white;
+}
+
+.navbar i {
+	font-size: 20px;
+	padding: 0;
+}
+
+.navbar button {
+	border: 0;
+	color: white;
+	text-align: center;
+	font-family: Comic Sans MS;
+	background-color: transparent;
+	margin-top: 6px;
+	margin-right: 10px;
+	padding: 7px;
+	border-radius: 10px;
+}
+
+.navbar button:hover {
+	box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0), 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+}
