@@ -14,6 +14,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
 var app = express();
+var errorhandler = require('errorhandler');
 var server = require('http').createServer(app);
 var io = require('socket.io')(http);
 var socket = io.listen(server);
@@ -27,13 +28,9 @@ app.use(bodyParser.json());
  * 
  * identified the route to go to the front end.
  */
-app.set('appPath', path.join(__dirname, 'client'));
 app.use(express.static(path.join(path.normalize(__dirname + '/'), 'client')));
-app.route('/*').get((req, res) => {
-    res.sendFile(app.get('appPath') + '/index.html');
-});
-app.route('*').get((req, res) => {
-	res.sendFile(app.get('appPath') + '/404.html');
+app.get('/*', function(req, res) {
+	res.sendFile(__dirname + '/client/index.html');
 });
 
 /**
