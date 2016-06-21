@@ -4,8 +4,7 @@
 
 .main {
 	width: 100%;
-	height: auto;
-	margin-bottom: 10%;
+	margin-top: 5%;
 	font-family: Comic Sans MS;
 }
 
@@ -26,7 +25,16 @@
 }
 
 .main input {
-	height: 35px; 
+	height: 35px;
+	width: 170px;
+	border-bottom-right-radius: 5px;
+	border-top-right-radius: 5px; 
+}
+
+.main input#qu {
+	height: 35px;
+	width: 210px;
+	border-radius: 5px;
 }
 
 .main #twitpart {

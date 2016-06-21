@@ -4,8 +4,21 @@
 
 .profile {
 	height: 100%;
-	margin-bottom: 10%;
 	font-family: Comic Sans MS;
+}
+
+.profile input {
+	height: 40px;
+	width:180px;
+	border-bottom-right-radius:5px;
+	border-top-right-radius:5px; 
+	margin-right: 1%;
+}
+
+.profile #original {
+	position: absolute;
+	top: 40%;
+	vertical-align: middle;
 }
 
 .profile img {
@@ -20,10 +33,6 @@
 	font-weight: bold;
 	font-size: 3.5em;
 	margin-bottom: 5%;
-}
-
-.profile input {
-	height: 35px; 
 }
 
 .profile .col-md-4 {

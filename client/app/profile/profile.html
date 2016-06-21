@@ -1,6 +1,6 @@
 <post></post>
 <div class="profile">
-	<div class="row">
+	<div class="row" id="original" ng-show="profileshow==0">
 		<div class="col-md-offset-1 col-md-10">
 			<form ng-submit="profileBtn(profileForm)" role="form">
 				<div class="row">
@@ -12,18 +12,38 @@
 							<div class="input-group-addon">
 								@
 							</div>
-							<input type="text" placeholder="e.g. HillaryClinton" style="width:170px;border-bottom-right-radius:5px;border-top-right-radius:5px;" ng-model="profileForm.name">
-							<button type="submit" class="btn btn-fill">profile</button>
+							<input type="text" placeholder="e.g. HillaryClinton" ng-model="profileForm.name">
+							<button type="submit" class="btn btn-fill"> GO </button>
 						</div>						
 					</div>
 				</div>
 			</form>
 		</div>
 	</div>
-	<hr>
-	<div class="row">
-		<div class="col-md-offset-1 col-md-10">		
-			<div ng-show="profileshow>0">
+	<div ng-show="profileshow>0">
+		<div class="row">
+			<div class="col-md-offset-1 col-md-10">
+				<form ng-submit="profileBtn(profileForm)" role="form">
+					<div class="row">
+						<div class="col-md-4">
+							Candidate:
+						</div>
+						<div class="col-md-8">
+							<div class="input-group">
+								<div class="input-group-addon">
+									@
+								</div>
+								<input type="text" placeholder="e.g. HillaryClinton" ng-model="profileForm.name">
+								<button type="submit" class="btn btn-fill"> GO </button>
+							</div>						
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<hr>
+		<div class="row">		
+			<div class="col-md-offset-1 col-md-10">		
 				<div>
 					<div class="row">
 						<h1>{{profileinfo[0]}} Profile</h1>

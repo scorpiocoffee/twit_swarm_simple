@@ -22,10 +22,17 @@
   padding: 0 0;
 }
 
-@media only screen and (max-height: 800px) {
-  .mainbody {
-    height: 100%;
-  }
+body {
+  min-height: 600px;
+  min-width: 700px;
+  height: 100%;
+  width: 100%;
+}
+
+#mainbody {
+  min-height: 350px;
+  height: 100%;
+  width: 100%;
 }
 
 button:active,
