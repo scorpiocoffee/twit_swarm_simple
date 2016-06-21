@@ -5,21 +5,20 @@ angular.module('webApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute',
-  'ui.bootstrap'
+  'ngRoute'
 ])
-  .config(function($routeProvider, $locationProvider, $httpProvider) {
+  .config(function($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'app/main/main.html',
+        templateUrl: 'pages/main/main.html',
         controller: 'MainController'
       })
       .when('/profile', {
-        templateUrl: 'app/profile/profile.html',
+        templateUrl: 'pages/profile/profile.html',
         controller: 'ProfileController'
       })
       .when('/words', {
-        templateUrl: 'app/words/words.html',
+        templateUrl: 'pages/words/words.html',
         controller: 'WordsController'
       })
       .otherwise({
@@ -27,10 +26,9 @@ angular.module('webApp', [
       });
 
     $locationProvider.html5Mode(true);
-    $httpProvider.interceptors.push('twitSocket');
 })
-  .factory('twitSocket',function($rootScope) {
-    var socket = io.connect();
+  .factory('socket',function($rootScope) {
+    var socket = io();
     return {
       on: function(eventName, callback) {
         socket.on(eventName, function() {

@@ -1,12 +1,8 @@
 'use strict';
 
-/**
- * Identify the navbar directive's controller function.
- */
-
 angular.module('webApp').directive('navbar', () => ({
 	restrict: 'E',
-	templateUrl: 'app/navbar/navbar.html',
+	templateUrl: 'pages/navbar/navbar.html',
 	controller: function($scope, $location, $route) {
 		this.$location = $location;
 		$scope.home = function() {

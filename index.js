@@ -1,13 +1,4 @@
-/**
- * Main application file
- */
-
 'use strict';
-
-/**
- * 
- * Initialization all the params
- */
 
 var http = require('http');
 var express = require('express');
@@ -24,19 +15,11 @@ var hotwords = require('./api/words_parse');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-/**
- * 
- * identified the route to go to the front end.
- */
 app.use(express.static(path.join(path.normalize(__dirname + '/'), 'client')));
 app.get('/*', function(req, res) {
 	res.sendFile(__dirname + '/client/index.html');
 });
 
-/**
- * 
- * Twitter API Information.
- */
 var client = new twitter({
 	consumer_key        : '0UyNUGhptJgezvEBL6JG7ZW9v',
 	consumer_secret     : 'U3BhoWnGtp5LPzDZabdmuKEKPkfE7a1vFej4tVtKYN1HAeVb2N',
@@ -44,16 +27,6 @@ var client = new twitter({
 	access_token_secret : 's3uP57Amo6OerHmhuKcqXUOXxlHXf7AMVVqECYBx5VMmR'
 });
 
-
-/**
- * 
- * A method to get two arrays' intersection.
- * 
- * @param array1: the first array.
- * @param array2: the secend array.
- * @return rs: the result of this method
- * 
- */
 function intersection(array1, array2) {
 	var rs = [], x = array1.length;
 	while (x--) array2.indexOf(array1[x]) != -1 && rs.push(array1[x]);
@@ -90,21 +63,9 @@ function gethottweets(hot_words, allnames, times, t, all_results, functio) {
 		}
 	});
 }
-/**
- * 
- * Using socket.io to connect the front end and get data.
- * 
- * 
- */
+
 io.on('connection', function(socket) {
 
-	/**
-	 * 
-	 * A method called 'search_query' which deal with the data and return the results to the front end.
-	 * 
-	 * @param data: the data which sent from the front end.
-	 * 
-	 */
 	socket.on('search_query', function(data) {
 
 		var content = data;
@@ -181,19 +142,11 @@ io.on('connection', function(socket) {
 				});
 			}
 			else {
-				console.log(all_results.length);
 				socket.emit('results', all_results);
 			}				
 		});		
 	});
 
-	/**
-	 * 
-	 * A method called 'profile' which deal with the data and return the results to the front end.
-	 * 
-	 * @param data: the data which sent from the front end.
-	 * 
-	 */
 	socket.on('profile', function(data) {
 		var name = data.name;
 		var content = 'from:' + name;
@@ -272,13 +225,6 @@ io.on('connection', function(socket) {
 		});		
 	});
 
-	/**
-	 * 
-	 * A method called 'find_hot_words' which deal with the data and return the results to the front end.
-	 * 
-	 * @param data: the data which sent from the front end.
-	 * 
-	 */
 	socket.on('find_hot_words', function(data) {
 		var allnames = data.name.replace(/\s/,'').split(/\;/);
 		var num = data.num;
@@ -331,25 +277,16 @@ io.on('connection', function(socket) {
         });
     });
 
-	/**
-	 * 
-	 * A method called 'post' which let client to post some message into the twitter.
-	 * 
-	 * @param data: the data which sent from the front end.
-	 * 
-	 */
-    socket.on('post', function(data) {
+	socket.on('post', function(data) {
     	var content = data.text;
     	client.post('statuses/update', { status: content }, function(err, data, response) {
 			// console.log(data);
 		});
     });
+
 });
 
-/**
- * 
- * Listen in the localhost:3000
- */
+
 server.listen(3000, function() {
    console.log('Express server listening on %d, in %s mode', 3000, app.get('env'));
 });

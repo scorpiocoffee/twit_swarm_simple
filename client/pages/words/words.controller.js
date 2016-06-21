@@ -1,10 +1,6 @@
 'use strict';
 
-/**
- * Identify the high-frequent words interface's controller function.
- */
-
-angular.module('webApp').controller('WordsController', function($scope, $location, twitSocket) {
+angular.module('webApp').controller('WordsController', function($scope, $location, socket) {
 	$scope.wordsForm = {};
 	$scope.allnames;
 	$scope.resultsshow = 0;
@@ -14,14 +10,14 @@ angular.module('webApp').controller('WordsController', function($scope, $locatio
 		$scope.allnames = wordsForm.name.replace(/\;/, ' ');
 		data.num = wordsForm.num;	
 		data.days = wordsForm.days;
-		twitSocket.emit('find_hot_words', data);
+		socket.emit('find_hot_words', data);
 		wordsForm.name = '';
 		wordsForm.num = '';
 		wordsForm.days = '';
 		$scope.resultsshow++;
 	};
 	
-	twitSocket.on('find_same', function(data) {
+	socket.on('find_same', function(data) {
 		$scope.allwords = data.words;
 		$scope.allcounts = data.counts;
 	});

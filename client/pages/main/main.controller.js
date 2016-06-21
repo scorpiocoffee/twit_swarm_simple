@@ -1,10 +1,6 @@
 'use strict';
 
-/**
- * Identify the queryInterface interface's controller function.
- */
-
-angular.module('webApp').controller('MainController', function($scope, $location, twitSocket) {
+angular.module('webApp').controller('MainController', function($scope, $location, socket) {
 
     $scope.searchForm = {};
     $scope.twits = [];    
@@ -75,15 +71,13 @@ angular.module('webApp').controller('MainController', function($scope, $location
                 data = 'from:@' + searchForm.name;
             }
         }
-        twitSocket.emit('search_query', data);
+        socket.emit('search_query', data);
         searchForm.name = '';
         searchForm.tag = '';
         searchForm.query = '';                    
     };
 
-    twitSocket.on('results', function(data) {      
+    socket.on('results', function(data) {      
         $scope.twits = data; 
     });
-
-
 });

@@ -6,8 +6,8 @@
 
 angular.module('webApp').directive('post', () => ({
 	restrict: 'E',
-	templateUrl: 'app/post/post.html',
-	controller: function($scope, $location, $route, twitSocket) {
+	templateUrl: 'pages/post/post.html',
+	controller: function($scope, $location, $route, socket) {
 		this.$location = $location;
 		$scope.postForm = {};
 		$scope.appear = true;
