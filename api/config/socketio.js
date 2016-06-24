@@ -2,12 +2,50 @@
 
 var twitter = require('twit');
 var hotwords = require('../methods/words_parse');
+
 var client = new twitter({
 	consumer_key        : '0UyNUGhptJgezvEBL6JG7ZW9v',
 	consumer_secret     : 'U3BhoWnGtp5LPzDZabdmuKEKPkfE7a1vFej4tVtKYN1HAeVb2N',
 	access_token        : '731213551197687808-jfhNALqo4ALXK2MBgEyifdLZCa7r3EB',
 	access_token_secret : 's3uP57Amo6OerHmhuKcqXUOXxlHXf7AMVVqECYBx5VMmR'
 });
+
+function intersection(array1, array2) {
+	var rs = [], x = array1.length;
+	while (x--) array2.indexOf(array1[x]) != -1 && rs.push(array1[x]);
+	return rs;
+}
+
+function gethottweets(hot_words, allnames, times, t, all_results, functio) {
+	client.get('search/tweets', {q: 'from:@' + allnames[times] + t, count: 100}, function(err, data, response) {
+    	var n = '';
+    	var tw = data.statuses;
+    	var oall = [];
+		for(var i in tw) {			
+			var w = hotwords.parseWords(tw[i].text);
+			n = n + ' ' + w;
+		}
+		n = n.trim();
+		var m = n.split(/\s+/);
+		m = hotwords.removeDuplicate(m);
+		m = hotwords.keywordsMap(n, m);
+		for(var [key, value] of m) {
+			hot_words.push(key);
+			hot_words.push(value);
+			oall.push(key);
+			hot_words = [];
+		}
+		if(times === allnames.length - 1) {
+			all_results.push(oall);
+			functio(all_results);
+		}
+		else {
+			times++;
+			all_results.push(oall);
+			gethottweets(hot_words,allnames,times,t,all_results,functio);
+		}
+	});
+}
 
 module.exports = function (io) {
 
@@ -172,6 +210,65 @@ module.exports = function (io) {
 		
 			});		
 		});
+
+		socket.on('find_hot_words', function(data) {
+			var allnames = data.name.replace(/\s/,'').split(/\;/);
+			var num = data.num;
+			var days = data.days;
+			var hot_words = [];
+
+			var date = new Date();
+	        var year = date.getFullYear();
+	        var month = date.getMonth() + 1;
+	        if(month < 10) {
+	            month = '0' + month;
+	        }
+	        var day = date.getDate()-days;
+	        if(day < 10) {
+	            day = '0' + day;
+	        }
+	        var t = ' since:' + year + '-' + month + '-' + day;
+	        var one = allnames[0];
+	        var two = allnames[1];
+	        var times = 0;
+	        var all_results = [];
+	        var allre = [];
+	        var sall = [];
+	        gethottweets(hot_words,allnames,times,t,all_results,function(final_result) {
+	        	for(var i = 0;i <= final_result.length - 1;i++) {
+	        		if(i == 0 && i !== (final_result.length - 1)) {
+	        			allre = intersection(final_result[i], final_result[i + 1]);
+	        		}
+	        		else {
+	        			allre = intersection(final_result[i], allre);
+	        		}
+			        sall = [];
+			        if(allre.length > num) {
+			        	for(var m=0; m<num; m++) {
+			        		sall.push(allre[i]);
+			        	}
+			        }
+			        else {
+			        	sall = allre;
+			        }
+	        	}
+	        	var values = [];
+	        	for(var j = 0;j <= allre.length - 1;j++) {
+	        		var value = ((Math.random() + 1) * 3) * ((Math.random() + 1) * 1);
+	        		value = '' + value;
+	        		value = parseInt(value);
+	        		values.push(value);
+	        	}
+	        	socket.emit('find_same', {words: allre,counts: values});
+	        });
+	    });
+
+	    socket.on('post', function(data) {
+	    	var content = data.text;
+	    	client.post('statuses/update', { status: content }, function(err, data, response) {
+				// console.log(data);
+			});
+	    });
 
 	});
 }

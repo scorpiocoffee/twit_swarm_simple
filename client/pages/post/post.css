@@ -1,0 +1,37 @@
+.post {
+	  display: inline-block;
+  	position: fixed;
+  	margin-top: 5%;
+}
+
+.post i {
+	  margin-left: 95%;
+	  display: inline-block;
+  	background-color: white;
+  	margin: 20%; 
+  	text-align: center;
+  	font-size: 30px;
+  	color: dimgrey; 
+  	padding : 15%;
+  	border-radius: 10px;
+  	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  	border: 1px solid lightgrey;
+}
+
+.post i:hover {
+	  text-decoration: none;
+  	box-shadow: 0 12px 16px 0 lightgrey, 0 12px 40px 0 lightgrey;
+}
+
+.post textarea {
+	  display: block;
+	  margin-left: 2%;
+	  border-radius: 10px;
+	  border: 1px solid grey;
+	  resize: none;
+}
+
+.post button {
+	margin-left: 70%;
+	margin-top: 2%;
+}

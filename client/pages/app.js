@@ -12,6 +12,10 @@ angular.module('webApp', [
         templateUrl: 'pages/main/main.html',
         controller: 'MainController'
       })
+      .when('/words', {
+        templateUrl: 'pages/words/words.html',
+        controller: 'WordsController'
+      })
       .when('/profile', {
         templateUrl: 'pages/profile/profile.html',
         controller: 'ProfileController'
