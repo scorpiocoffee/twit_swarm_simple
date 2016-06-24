@@ -18,7 +18,6 @@ app.get('/*', function(req, res) {
 	res.sendFile(__dirname + '/client/index.html');
 });
 app.use(errorhandler());
-require('./api/config/routes')(app);
 require('./api/config/socketio')(socket);
 
 var PORT = process.env.PORT || 3000;
