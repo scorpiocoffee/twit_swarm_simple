@@ -17,7 +17,7 @@ app.use(express.static(path.join(path.normalize(__dirname + '/'), 'client')));
 app.get('/*', function(req, res) {
 	res.sendFile(__dirname + '/client/index.html');
 });
-app.use(errorhandler());
+// app.use(errorhandler());
 require('./api/config/socketio')(socket);
 
 var PORT = process.env.PORT || 3000;

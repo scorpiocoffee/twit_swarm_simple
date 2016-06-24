@@ -1,7 +1,5 @@
 'use strict';
 
-console.log('Hotwords is ready.');
-
 exports.parseWords = function parseWords(string) {
 	var str = string.toLowerCase();
 	str = str.replace(/http[^\s]+/ig,' ');

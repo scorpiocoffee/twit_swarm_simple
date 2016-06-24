@@ -3,7 +3,8 @@
 angular.module('webApp').controller('MainController', function($scope, $location, socket) {
 
     $scope.searchForm = {};
-    $scope.twits = [];    
+    $scope.twits = [];  
+    $scope.results = 0;  
 
     $scope.searchClick = function(searchForm) {
         var data = new Object();
@@ -74,10 +75,12 @@ angular.module('webApp').controller('MainController', function($scope, $location
         socket.emit('search_query', data);
         searchForm.name = '';
         searchForm.tag = '';
-        searchForm.query = '';                    
+        searchForm.query = '';  
+        $scope.results++;                  
     };
 
-    socket.on('results', function(data) {      
+    socket.on('results', function(data) {     
         $scope.twits = data; 
     });
+
 });

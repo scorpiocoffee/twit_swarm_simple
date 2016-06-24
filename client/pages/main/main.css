@@ -1,55 +1,62 @@
-/**
- * queryInterface interface style
- */
-
-.main {
+main {
 	width: 100%;
 	margin-top: 5%;
 	font-family: Comic Sans MS;
 }
 
-.main h1 {
+main h1 {
 	text-align: center;
 	font-weight: bold;
 	font-size: 3.5em;
 	margin-bottom: 5%;
 }
 
-.main .col-md-4 {
-	text-align: right;
-	font-size: 1.2em;
+main select {
+	width: 180px;
 }
 
-.main .row {
+main .row {
 	margin-top: 35px;
 }
 
-.main input {
+main input {
 	height: 35px;
 	width: 170px;
 	border-bottom-right-radius: 5px;
 	border-top-right-radius: 5px; 
 }
 
-.main input#qu {
+main input#qu {
 	height: 35px;
 	width: 210px;
 	border-radius: 5px;
 }
 
-.main #twitpart {
+main p {
 	width: 100%;
-	color: black;
-	text-decoration: none;
-	margin-top: 2%;
-	padding: 10px;
-	border: 1px solid lightgray;
-	border-radius: 10px;
-	box-shadow: 0px 6px 6px 4px rgba(0,0,0,0), 0 3px 6px 0 rgba(0,0,0,0.5);
+	text-align: center;
+	font-size: 1.5em;
+	font-weight: bold;
+	text-decoration: underline;
 }
 
-.main #twitpart:hover {
+main #twitpart {
+	scroll-behavior: auto;
+	column-count: 3;
+}
+
+main #eachone {
+	width: 95%;
 	text-decoration: none;
-	box-shadow: 0px 12px 12px 10px rgba(0,0,0,0), 0 18px 50px 0 rgba(0,0,0,0.5);
+	margin: 2%;
+	padding: 2%;
+	border: 1px solid lightgray;
+	border-radius: 10px;
+	box-shadow: 0px 3px 3px 2px rgba(0,0,0,0), 0 3px 5px 0 rgba(0,0,0,0.5);
+}
+
+main #eachone:hover {
+	text-decoration: none;
+	box-shadow: 0px 6px 6px 5px rgba(0,0,0,0), 0 9px 30px 0 rgba(0,0,0,0.5);
 }
 
