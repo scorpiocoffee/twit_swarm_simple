@@ -225,58 +225,6 @@ io.on('connection', function(socket) {
 		});		
 	});
 
-	socket.on('find_hot_words', function(data) {
-		var allnames = data.name.replace(/\s/,'').split(/\;/);
-		var num = data.num;
-		var days = data.days;
-		var hot_words = [];
-
-		var date = new Date();
-        var year = date.getFullYear();
-        var month = date.getMonth() + 1;
-        if(month < 10) {
-            month = '0' + month;
-        }
-        var day = date.getDate()-days;
-        if(day < 10) {
-            day = '0' + day;
-        }
-        var t = ' since:' + year + '-' + month + '-' + day;
-        var one = allnames[0];
-        var two = allnames[1];
-        var times = 0;
-        var all_results = [];
-        var allre = [];
-        var sall = [];
-        gethottweets(hot_words,allnames,times,t,all_results,function(final_result) {
-        	for(var i = 0;i <= final_result.length - 1;i++) {
-        		if(i == 0 && i !== (final_result.length - 1)) {
-        			allre = intersection(final_result[i], final_result[i + 1]);
-        		}
-        		else {
-        			allre = intersection(final_result[i], allre);
-        		}
-		        sall = [];
-		        if(allre.length > num) {
-		        	for(var m=0; m<num; m++) {
-		        		sall.push(allre[i]);
-		        	}
-		        }
-		        else {
-		        	sall = allre;
-		        }
-        	}
-        	var values = [];
-        	for(var j = 0;j <= allre.length - 1;j++) {
-        		var value = ((Math.random() + 1) * 3) * ((Math.random() + 1) * 1);
-        		value = '' + value;
-        		value = parseInt(value);
-        		values.push(value);
-        	}
-        	socket.emit('find_same', {words: allre,counts: values});
-        });
-    });
-
 	socket.on('post', function(data) {
     	var content = data.text;
     	client.post('statuses/update', { status: content }, function(err, data, response) {
