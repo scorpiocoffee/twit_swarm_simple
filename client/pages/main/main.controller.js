@@ -4,7 +4,7 @@ angular.module('webApp').controller('MainController', function($scope, $location
 
     $scope.searchForm = {};
     $scope.twits = [];  
-    $scope.results = 0;  
+    $scope.results = 0; 
 
     $scope.searchClick = function(searchForm) {
         var data = new Object();

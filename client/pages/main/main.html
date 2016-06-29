@@ -1,13 +1,13 @@
 <main>
 	<div class="container">
 		<h1>Welcome, This is a Twitter Search!</h1>
-		<div class="row">
-			<div class="col-xs-offset-1 col-xs-10">
+		<div class="row" ng-show="results==0">
+			<div class="col-xs-offset-2 col-xs-9">
 				<form ng-submit="searchClick(searchForm)" role="form">
 					<div class="row">
 						<div class="section">
 							<div class="col-xs-1">
-								Candidate
+								Candidate:
 							</div>
 							<div class="col-xs-5">
 								<div class="input-group">
@@ -20,7 +20,7 @@
 						</div>
 						<div class="section">
 							<div class="col-xs-1">
-								HashTags
+								HashTags:
 							</div>
 							<div class="col-xs-5">
 								<div class="input-group">
@@ -35,7 +35,7 @@
 					<div class="row">
 						<div class="section">
 							<div class="col-xs-1">
-								Query
+								Query:
 							</div>
 							<div class="col-xs-5">
 								<input type="text" placeholder="e.g. Clinton" ng-model="searchForm.query" id="qu">
@@ -43,10 +43,10 @@
 						</div>
 						<div class="section">
 							<div class="col-xs-1">
-								Type
+								Type:
 							</div>
 							<div class="col-xs-4">
-								<select ng-model="searchForm.type" class="form-control">
+								<select ng-model="searchForm.type" class="form-control" style="width: 210px;">
 									<option>AND</option>
 									<option>OR</option>
 								</select>
@@ -62,10 +62,61 @@
 			</div>
 		</div>
 		<div class="row" ng-show="results>0">
-		<hr>
-			<div class="col-xs-offset-1 col-xs-10">
-				<p>There are {{twits.length}} results.</p>
-				<br>
+		 	<div class="col-xs-offset-1 col-xs-5">
+				<form ng-submit="searchClick(searchForm)" role="form">
+					<div class="row">
+						<div class="col-xs-4">
+							Candidate:
+						</div>
+						<div class="col-xs-8">
+							<div class="input-group">
+								<div class="input-group-addon">
+									@
+								</div>
+								<input type="text" placeholder="e.g. HillaryClinton" ng-model="searchForm.name">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-4">
+							HashTags:
+						</div>
+						<div class="col-xs-8">
+							<div class="input-group">
+								<div class="input-group-addon">
+									#
+								</div>
+								<input type="text" placeholder="e.g. PrimaryDay" ng-model="searchForm.tag">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-4">
+							Query:
+						</div>
+						<div class="col-xs-8">
+							<input type="text" placeholder="e.g. Clinton" ng-model="searchForm.query" id="qu">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-4">
+							Type:
+						</div>
+						<div class="col-xs-8">
+							<select ng-model="searchForm.type" class="form-control" style="width: 210px;">
+								<option>AND</option>
+								<option>OR</option>
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-offset-9 col-xs-2">
+						<button type="submit" class="btn btn-fill">Search</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="col-xs-5">
 				<div id="twitpart">
 					<div class="section" id="eachone" ng-repeat="n in twits">
 						<a href="http://twitter.com/{{n[0]}}" style="text-decoration:none;">
@@ -77,7 +128,8 @@
 							<label>{{n[2]}}</label>
 						</a>	
 					</div>
-				</div>				
+				</div>
+				<p>There are {{twits.length}} results.</p>
 			</div>
 		</div>
 	</div>
